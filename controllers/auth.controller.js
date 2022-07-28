@@ -138,8 +138,8 @@ const createUser = async ( Userdata, password) => {
       return [false, 'Unable to sign you up'];
     }
     try {
-     let smss=sendSMS(`+91${Userdata}`,from,otpGenerated)
-     console.log(smss);
+    //  let smss=sendSMS(`+91${Userdata}`,from,otpGenerated)
+    //  console.log(smss);
       return [true, newUser];
     } catch (error) {
       return [false, 'Unable to sign up, Please try again later', error];
@@ -231,13 +231,12 @@ module.exports.RestPasswordsendOTP = async (req, res) => {
       console.log(mail);
       return res.status(200).json({message:'Mail Send',OTP:otpGenerated})
     }else{
-      sendSMS(`+91${Userdata}`,from,otpGenerated)
+      // sendSMS(`+91${runUserdata}`,from,otpGenerated)
       return res.status(200).json({
         message:'SMSS Send',OTP:otpGenerated
       })   
     }
     
-     
    } catch (error) {
     return res.status(400).json({
       message:'Unable to Send OTP, Please try again later'
@@ -245,7 +244,6 @@ module.exports.RestPasswordsendOTP = async (req, res) => {
    }
 
 };
-
 //.RestPasswordOtp
 
 module.exports.RestPasswordOtp = async (req, res) => {
@@ -352,6 +350,13 @@ module.exports.login = async (req, res) => {
   }
 
 };
+
+
+
+
+
+
+
 
 //post api for User profile
 
