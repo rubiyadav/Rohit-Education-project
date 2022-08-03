@@ -13,7 +13,7 @@ var storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname);
+    cb(null, Date.now + file.originalname);
   },
 });
 
@@ -25,7 +25,7 @@ router.post('/post', upload.single("myField"), isAuthenticated, studentpost.stud
 // router.post('/post', upload.single("myField"), studentpost.studentpost);
 
 //get All post
-router.get('/get', isAuthenticated,studentpost.studentget);
+router.get('/get', isAuthenticated, studentpost.studentget);
 
 //get byID
 router.get('/getbyid/:id', studentpost.studentgetbyID);
@@ -37,7 +37,7 @@ router.get('/getbyauther/:auther', studentpost.studentgetbyAuther);
 router.get('/getbyidcategory/:category', studentpost.studentgetbyCategory);
 
 //patch api
-router.patch('/studentpatch/:id',studentpost.StudentPostPatch)
+router.patch('/studentpatch/:id', studentpost.StudentPostPatch)
 
 //Delete api
 router.delete('/studentdelete/:id', studentpost.DeleteStudentpost)
@@ -46,7 +46,7 @@ router.delete('/studentdelete/:id', studentpost.DeleteStudentpost)
 router.patch('/studentlikecount/:id', studentpost.StudentPostLikeCountPatch)
 
 //post for course
-router.post('/coursepost',studentpost.Coursestudentpost)
+router.post('/coursepost', studentpost.Coursestudentpost)
 
 
 //get for course
@@ -98,7 +98,7 @@ router.get('/getdailytaskscore/:id', studentpost.getStudenDailyScoreTasks)
 router.patch('/dailytaskscorepatch/:id', studentpost.StudentDailyScoreTaskpatch)
 
 //Delete the score
-router.delete('/deletedailytaskscore/:id',studentpost.DeleteStudentDailyScoreTask)
+router.delete('/deletedailytaskscore/:id', studentpost.DeleteStudentDailyScoreTask)
 
 //post for Student class romm
 router.post('/poststudentclassroom', studentpost.PostStudentClassRoom)
@@ -110,10 +110,10 @@ router.get('/getsdtudentclassroom/:id', studentpost.getStudenClassRoom)
 router.patch('/patchstudentclassroom/:id', studentpost.StudentClassRoompatch)
 
 //Delete for Student Class room
-router.delete('/deletestudentclassroom/:id',studentpost.DeleteStudentClassRoom)
+router.delete('/deletestudentclassroom/:id', studentpost.DeleteStudentClassRoom)
 
 //get  for search
-router.get('/searchpost',studentpost.SearchStudentPost)
+router.get('/searchpost', studentpost.SearchStudentPost)
 
 module.exports = router;
 
